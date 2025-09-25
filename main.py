@@ -1,13 +1,17 @@
 from init_models import init_models
-from train_models import train
-from test_models import test
+from train_models import train_models
+from test_models import test_models
 import matplotlib.pyplot as plt
-from Datas import data_func, data_mnist
+from Datas import create_data_func, create_data_mnist
 
 
-data = data_mnist
+def main():
+    data = create_data_func()
+    models = init_models()
+    train_models(models, data, do_print=True, do_plot=True)
+    test_models(models, data, do_plot=True)
+    plt.show()
 
-models = init_models()
-train(models, data.X_train, data.Y_train, do_print=True, do_plot=True)
-test(models, data.X_test, data.Y_test, do_plot=True)
-plt.show()
+
+if __name__ == "__main__":
+    main()

@@ -1,2 +1,2 @@
-from .data_func import data_func
-from .data_mnist import data_mnist
+from .data_func import create_data_func
+from .data_mnist import create_data_mnist

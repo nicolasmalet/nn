@@ -39,10 +39,6 @@ get_df = {
 }
 
 
-def MSE(Y_pred, Y_true):
-    return -np.sum(Y_true * np.log(Y_pred))
-
-
 def cross_entropy(Y_pred, Y_true):
     return -np.log(Y_pred[np.arange(Y_pred.shape[1]), Y_true])
 

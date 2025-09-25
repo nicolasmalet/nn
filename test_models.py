@@ -1,15 +1,12 @@
-import matplotlib.pyplot as plt
+from Tester import test
+from plot import plot_predictions
 
 
-def test(models, X_test, Y_test, do_plot=False):
+def test_models(models, data, do_plot=False):
     Y_preds = []
     for model in models:
-        Y_pred = model.test(X_test, Y_test)
+        Y_pred = test(model, data)
         Y_preds.append(Y_pred)
 
     if do_plot:
-        fig, axs = plt.subplots(1, len(models), figsize=(12, 4))
-        for i in range(len(models)):
-            axs[i].plot(X_test[0, 0], Y_test[0, 0], color="green")
-            axs[i].plot(X_test[0, 0], Y_preds[i][0], color="blue")
-            axs[i].set_title(f"Predictions with : {models[i].name}")
+        plot_predictions(models, data, Y_preds, savepath=None)
